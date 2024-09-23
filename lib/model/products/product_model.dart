@@ -44,16 +44,16 @@ class Result {
 class Product {
   ProductInfo? productInfo;
   List<Promotions>? promotions;
-  Null? totalAvailable;
+  Null totalAvailable;
   List<Prices>? prices;
   List<Null>? flashSales;
   ProductDetail? productDetail;
   Provider? provider;
   Status? status;
-  Null? salePoint;
+  Null salePoint;
   List<Null>? warehouseStocks;
   ProductOptions? productOptions;
-  Null? availableQuantity;
+  Null availableQuantity;
   List<Null>? siteStocks;
 
   Product(
@@ -177,7 +177,7 @@ class ProductInfo {
   String? uomCode;
   int? uomRatio;
   String? uomName;
-  Null? manufacturer;
+  Null manufacturer;
   String? barcode;
   String? shippingType;
   String? displayName;
@@ -444,7 +444,7 @@ class Promotions {
   String? endTimestampSec;
   String? name;
   String? type;
-  Null? landing;
+  Null landing;
 
   Promotions(
       {this.id,
@@ -496,13 +496,13 @@ class Promotions {
 
 class Condition {
   String? coupon;
-  Null? orderValueMin;
-  Null? orderValueMax;
+  Null orderValueMin;
+  Null orderValueMax;
   int? blockSize;
   int? minQuantity;
   int? blockSizeDecimal;
   int? minQuantityDecimal;
-  Null? groupBuyInfo;
+  Null groupBuyInfo;
 
   Condition(
       {this.coupon,
@@ -543,7 +543,7 @@ class Benefit {
   Discount? discount;
   List<Null>? gifts;
   Voucher? voucher;
-  Null? bulkDiscount;
+  Null bulkDiscount;
 
   Benefit({this.discount, this.gifts, this.voucher, this.bulkDiscount});
 
@@ -581,7 +581,7 @@ class Discount {
   int? percent;
   int? maxAmount;
   int? flat;
-  Null? maxAmountPerOrder;
+  Null maxAmountPerOrder;
 
   Discount({this.percent, this.maxAmount, this.flat, this.maxAmountPerOrder});
 
@@ -677,7 +677,7 @@ class ProductDetail {
   String? description;
   String? shortDescription;
   AttributeSet? attributeSet;
-  Null? productLine;
+  Null productLine;
   SeoInfo? seoInfo;
   List<AttributeGroups>? attributeGroups;
   List<Images>? images;
@@ -1013,12 +1013,12 @@ class Options {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['value'] = this.value;
-    data['optionId'] = this.optionId;
-    if (this.images != null) {
+    data['value'] = value;
+    data['optionId'] = optionId;
+    if (images != null) {
       // data['images'] = this.images!.map((v) => v.toJson()).toList();
     }
-    data['thumbnailUrl'] = this.thumbnailUrl;
+    data['thumbnailUrl'] = thumbnailUrl;
     return data;
   }
 }

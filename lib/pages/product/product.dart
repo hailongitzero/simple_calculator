@@ -1,10 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:get/get.dart';
 import 'package:simple_calculator/components/button/logout_icon.dart';
 import 'package:simple_calculator/controllers/products/product_controller.dart';
 import 'package:simple_calculator/pages/product/product_attribute.dart';
 import 'package:simple_calculator/pages/product/product_color.dart';
+import 'package:simple_calculator/pages/product/product_info.dart';
+import 'package:simple_calculator/pages/product/product_prices.dart';
 import 'package:simple_calculator/pages/product/product_size.dart';
 import 'package:simple_calculator/pages/product/product_slider.dart';
 
@@ -19,8 +22,13 @@ class ProductPage extends StatefulWidget {
 
 class _ProductPage extends State<ProductPage> {
   final productKey = GlobalKey();
-  DetailProductController productController =
-      Get.put(DetailProductController());
+  late DetailProductController productController;
+
+  @override
+  void initState() {
+    super.initState();
+    productController = Get.put(DetailProductController());
+  }
 
   Widget _buildBody() {
     return SafeArea(
@@ -66,7 +74,6 @@ class _ProductPage extends State<ProductPage> {
 
                     ProductSizeSelect(productController: productController),
 
-                    ///Name
                     Text(
                       productController.product.value?.productInfo?.name ?? '',
                       style: const TextStyle(
@@ -74,53 +81,19 @@ class _ProductPage extends State<ProductPage> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
+
                     const SizedBox(
                       height: 6,
                     ),
-                    Text(
-                      '${productController.product.value?.prices?.first.latestPrice}đ',
-                      style: const TextStyle(
-                        fontSize: 20,
-                        color: Colors.blueAccent,
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 6,
-                    ),
-                    Row(
-                      children: [
-                        Text(
-                          '${productController.product.value?.prices?.first.supplierRetailPrice}đ   ',
-                          style: const TextStyle(
-                            decoration: TextDecoration.lineThrough,
-                            fontSize: 15,
-                            color: Colors.grey,
-                          ),
-                        ),
-                        Text(
-                          '-${productController.product.value?.prices?.first.discountPercent}%',
-                          style: const TextStyle(
-                            fontSize: 15,
-                            color: Colors.blueAccent,
-                          ),
-                        ),
-                      ],
-                    ),
+                    ProductPriceSelect(
+                        prices: productController.product.value?.prices),
+
                     const SizedBox(
                       height: 6,
                     ),
 
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: productController.getInfoTitleList
-                          .map((e) => Container(
-                                margin: const EdgeInsets.only(
-                                  bottom: 10,
-                                ),
-                                child: Text(e),
-                              ))
-                          .toList(),
-                    ),
+                    ProductInfors(infor: productController.getInfoTitleList),
+
                     const SizedBox(
                       height: 6,
                     ),
@@ -141,7 +114,10 @@ class _ProductPage extends State<ProductPage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Text('Xem thêm nội dung'),
+                        const Text(
+                          'Xem thêm nội dung',
+                          style: TextStyle(fontSize: 20),
+                        ),
                         IconButton(
                           icon: const Icon(Icons.expand_more),
                           onPressed: () {},
@@ -158,22 +134,38 @@ class _ProductPage extends State<ProductPage> {
                         'Mô tả sản phẩm',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: 22,
+                          fontSize: 20,
                         ),
                       ),
                     ),
                     const SizedBox(
                       height: 6,
                     ),
-                    Text(
-                      '${productController.product.value?.productDetail?.description}',
-                      style: const TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w500,
-                      ),
+                    HtmlWidget(
+                      productController
+                              .product.value?.productDetail!.description ??
+                          "",
+                      textStyle:
+                          const TextStyle(fontSize: 14, color: Colors.black),
                     ),
                     const SizedBox(
                       height: 150,
+                    ),
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                      child: FloatingActionButton(
+                          // Change icon as needed
+                          backgroundColor: Colors.blue,
+                          foregroundColor: Colors.white,
+                          shape: BeveledRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          mini: true, // Make it smaller (optional)
+                          child: const Text(
+                            'Liên Hệ',
+                            style: TextStyle(color: Colors.black),
+                          ),
+                          onPressed: () => {}),
                     ),
                   ],
                 ),

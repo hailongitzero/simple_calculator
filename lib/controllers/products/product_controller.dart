@@ -19,7 +19,7 @@ class DetailProductController extends GetxController {
   @override
   Future<void> onInit() async {
     super.onInit();
-    await service.fetchProduct();
+    await getDetailProduct();
     getInfoTitle();
     // getAttributes();
     getImageCarousel();
@@ -72,8 +72,8 @@ class DetailProductController extends GetxController {
 
     try {
       final Product? response = await service.fetchProduct();
-      if (response == null) {
-        product.value = Product.fromJson(response as Map<String, dynamic>);
+      if (response != null) {
+        product.value = response;
         isLoading.value = false;
         // update();
       } else {

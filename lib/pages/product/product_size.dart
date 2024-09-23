@@ -25,7 +25,11 @@ class ProductSizeSelect extends StatelessWidget {
                   ),
                   padding:
                       const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                  child: Text(e ?? ''),
+                  child: Text(e ?? '',
+                      style: const TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500,
+                      )),
                 ),
               ))
           .toList(),

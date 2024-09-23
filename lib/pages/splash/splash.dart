@@ -6,6 +6,8 @@ import 'package:simple_calculator/components/navigator/navigator.dart';
 import 'package:simple_calculator/pages/login/login.dart';
 
 class SplashScreen extends StatelessWidget {
+  const SplashScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -20,7 +22,6 @@ class SplashScreen extends StatelessWidget {
   }
 
   isLoggedIn() {
-    print(FirebaseAuth.instance.currentUser ?? "empty");
     if (FirebaseAuth.instance.currentUser != null) {
       return true;
     } else {

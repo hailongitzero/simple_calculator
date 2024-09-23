@@ -12,6 +12,8 @@ class LoginPage extends StatelessWidget {
   // Create an instance of LoginController using GetX
   final LoginController loginController = Get.put(LoginController());
 
+  LoginPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

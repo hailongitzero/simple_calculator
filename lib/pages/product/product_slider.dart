@@ -24,20 +24,6 @@ class ProductImageSlide extends StatelessWidget {
                   ))
               .toList(),
         ),
-        Align(
-          alignment: Alignment.topRight,
-          child: Container(
-            padding: const EdgeInsets.symmetric(
-              vertical: 6,
-              horizontal: 16,
-            ),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(16),
-              color: Colors.grey,
-            ),
-            // child: const Text('1/7'),
-          ),
-        )
       ],
     );
   }

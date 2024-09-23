@@ -19,7 +19,7 @@ class ReceiptResponse {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     if (results != null) {
       data['results'] = results!.map((v) => v.toJson()).toList();
     }
@@ -50,7 +50,7 @@ class Receipt {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
     data['title'] = title;
     data['image'] = image;
@@ -77,7 +77,7 @@ class Nutrition {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     if (nutrients != null) {
       data['nutrients'] = nutrients!.map((v) => v.toJson()).toList();
     }
@@ -99,7 +99,7 @@ class Nutrients {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['name'] = name;
     data['amount'] = amount;
     data['unit'] = unit;

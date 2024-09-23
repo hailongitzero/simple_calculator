@@ -53,7 +53,7 @@ class _AppState extends State<MainApp> {
           child: Material(child: child),
         );
       },
-      home: SplashScreen(),
+      home: const SplashScreen(),
     );
   }
 }

@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:simple_calculator/model/products/product_model.dart';
-import 'package:simple_calculator/model/receipt/receipt_model.dart';
 
 class ApiProductService {
   final Dio _dio = Dio();
@@ -17,9 +16,9 @@ class ApiProductService {
         try {
           DetailProductTotalModel detail = DetailProductTotalModel.fromJson(
               response.data as Map<String, dynamic>);
-          return Product.fromJson(
-              detail.result?.product as Map<String, dynamic>);
-        } catch (_) {
+          return detail.result?.product;
+        } catch (e) {
+          print(e);
           return null;
         }
       } else {

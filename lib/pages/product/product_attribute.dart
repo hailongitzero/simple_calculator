@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:simple_calculator/controllers/products/product_controller.dart';
 import 'package:simple_calculator/model/products/product_model.dart';
 
 class ProductAttribute extends StatelessWidget {
@@ -23,9 +22,10 @@ class ProductAttribute extends StatelessWidget {
             children: [
               Expanded(
                 child: Text(
-                  attributeGroups[index].name ?? '',
+                  attributeGroups?[index].name ?? '',
                   style: const TextStyle(
                     fontWeight: FontWeight.w500,
+                    fontSize: 16,
                   ),
                 ),
               ),
@@ -33,8 +33,9 @@ class ProductAttribute extends StatelessWidget {
                 child: Text(
                   attributeGroups?[index].value ?? '',
                   style: const TextStyle(
-                    fontWeight: FontWeight.w500,
-                  ),
+                      fontWeight: FontWeight.w500,
+                      fontSize: 16,
+                      color: Colors.black),
                 ),
               ),
             ],

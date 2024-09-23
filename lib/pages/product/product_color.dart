@@ -22,16 +22,39 @@ class ProductColorSelect extends StatelessWidget {
                     borderRadius: BorderRadius.circular(16),
                     color: Colors.transparent,
                     border: Border.all(
-                      color: Colors.blueAccent,
+                      color: Colors.black,
                     ),
                   ),
                   padding:
                       const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                  child: Text(e ?? ''),
+                  child: Text(
+                    e ?? '',
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500,
+                        color: getColor(e)),
+                  ),
                 ),
               ))
           .toList(),
     );
+  }
+
+  Color getColor(String? color) {
+    switch (color) {
+      case 'Green':
+        return Colors.green;
+      case 'Blue':
+        return Colors.blue;
+      case 'Yellow':
+        return Colors.yellow;
+      case 'Pink':
+        return Colors.pink;
+      case 'Black':
+        return Colors.black;
+      default:
+        return Colors.white;
+    }
   }
 
   @override
